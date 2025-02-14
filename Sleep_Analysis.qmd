@@ -1,0 +1,169 @@
+---
+author: "Philip Fosser"
+title: "Sleep analysis"
+format: html
+editor: visual
+echo: false
+warning: false
+toc: true
+---
+
+
+```{r message=FALSE}
+library(tidyverse)
+library(waffle)
+library(smplot2)
+library(gt)
+library(gtExtras)
+library(gtsummary)
+library(wesanderson)
+```
+
+```{r}
+Sleep_dataset <- read_csv("Sleep_health_and_lifestyle_dataset.csv")
+```
+
+## An exploratory analasys of sleep, stress and general health indicatory data.
+
+In recent times, there has been a lot of interest in the importance of good quality sleep, as there has been a substantial influx of good quality studies on the health effects that good quality sleep, or lack there off, has on the human body and psyche. Perhaps more importantly for the public awareness of the importance of quality sleep is the book [why we sleep](https://en.wikipedia.org/wiki/Why_We_Sleep) by Mathew Walker, and the and the many podcast episodes by [Huberman](https://www.hubermanlab.com/all-episodes), where he frequently underlines the importance of getting high quality sleep as the most important activity one can do for ones own health, and that in general no one should try to do anything else for ones health in lieu of getting high quality sleep if one wishes to improve their own health.
+
+
+::: {layout="[40,60]" layout-valign="center"}
+First lets explore the data. To the right of this text there are visual representations of the data set. There are a total of 13 variables, including the ID for the study subjects, describing some of the health indicators for the 374 subjects. First thing worth mentioning is that the study has been run of male and female subjects, which sadly, is not something to be taken for granted even today. On top of that, the study has been done on a good range of age groups, which is another good indicator for the quality of the study. However on closer inspection, while the both the ratio of males and females, and the range of ages are good, the spread of men and women across the ages leaves something to be desired. The majority of males in the study are between their late twenties to early forties, and none of the men are above their mid fifties. The majority of female subjects on the other hand, are between the ages of their late forties and early sixties. There are no women in the study who are in their mid twenties, and very few are in their late twenties and early thirties. For the purposes of this report, it's not that impactful. I don't expect there to be a significant difference between men and women when it comes to the health impacts of sleep for any of the reported age groups. But it will impact any models created using either gender or age as one of the factors. Therefore, I will not use these factors for any of the regressions used in this report.
+
+```{r}
+Sleep_dataset %>% 
+  select(Gender) %>% 
+  group_by(Gender) %>% 
+  count(name = "Count") %>% 
+  ggplot(aes(y= "", x= Count, fill = Gender)) +
+  geom_col() +
+  geom_text(aes(label = Count),
+            position = position_stack(vjust = 0.5)) +
+  coord_polar(start = 0) +
+  scale_fill_manual(values = wes_palette("GrandBudapest1")) +
+  theme_void() +
+  ggtitle("The ratio of men and women in the study")
+
+Sleep_dataset %>% 
+  ggplot(aes(x = Age, fill = Gender)) +
+  geom_histogram(binwidth = 5, colour = "black") +
+  scale_fill_manual(values = wes_palette("GrandBudapest1")) +
+   theme(
+    panel.grid = element_blank(),
+    panel.background = element_blank()
+  ) +
+  ggtitle("The ratio of men and women, didided by age ranges")
+
+Sleep_dataset %>% 
+  ggplot(aes(x = Occupation)) +
+  geom_bar(fill = wes_palette("GrandBudapest1", n = 11, type = "continuous")) +
+  coord_flip() +
+  theme(
+    panel.grid = element_blank(),
+    panel.background = element_blank()
+  ) +
+  ggtitle("An overview of the subjects occupations")
+```
+:::
+
+The occupational background of the subjects is also fairly diverse, considering the size of the study, but it's biased towards occupations that require some college background. This will probably have some effect on the reported stress numbers, as the subjects are more likely to have decent salary, at least compared to non college educated individuals. [A persons financial situation is a known contributor to a persons stress levels](https://nyaspubs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1749-6632.1999.tb08111.x), so this it's worth taking into consideration.
+
+It's also worth taking into consideration that 42% of subjects have either sleep apnea, or sleep disorder. I believe that this will most likely impact the sleep duration, or the sleep quality (or both). I created i binary helper column, to help control for whether or not the subject has a sleeping disorder or not, to increase the accuracy of my analysis down the line.
+
+```{r}
+Sleep_dataset %>% 
+  mutate(Sleep_Disorder_Binary = ifelse(Sleep_dataset$`Sleep Disorder`=="None", 0, 1)) %>% 
+  select(Sleep_Disorder_Binary) %>% 
+  group_by(Sleep_Disorder_Binary) %>% 
+  count(name = "Count") %>% 
+  waffle(
+    colors = wes_palette("GrandBudapest1"),
+    rows = 11
+    ) +
+  labs(caption = "58% of Subjects do not have any pre exsisting sleep disorders, the remaining 42% do.") +
+  ggtitle("Subjects without (0), vs with (1) pre existing sleep disorders.")
+```
+
+### Vissualizing the correlation between the quality and duration of sleep, with other health and wellness factors
+
+The plot to the right visualizes the correlation between the the amount of sleep had (the explanatory variable), and the quality of sleep (the dependent variable). While a simple Pearson correlation analysis is by no means sufficient to make a conclusionary statement about any causal effects, I do believe it's worth noting. And if there is a chance that improving sleep quality can be fixed both easily and significantly by going to bed a bit earlier, it's worth giving a try. We can also see that the quantity of sleep increases the quality of sleep for people with sleeping disorders as well, and based on the graph, to a greater extent than for people without some form of sleeping disorder, as the dots representing the subject with sleeping disorder tend to be further to the left for any given level of sleep quality. The reason why people with sleeping disorders on average have an overall lower quality of sleep, assuming the assumption that the duration of sleep determines the quality of sleep is correct, is because people with sleeping disorder tend to have fewer hours of sleep than people without any sleeping disorders.
+
+```{r}
+ggplot(Sleep_dataset, aes(x=`Sleep Duration`, y = `Quality of Sleep`, )) +
+  geom_point(aes(colour = `Sleep Disorder`)) +
+  sm_statCorr(r2 = T, color = "Black") +
+  scale_colour_manual(values = wes_palette("GrandBudapest1", n = 3)) +
+  theme_classic()+
+  ggtitle("The relationship between sleep length, and quality of sleep \n controlling for sleep disorders.")
+```
+
+### Checking the subjects blood preassure, and how it relates to their level of stress.
+
+In this data set, the only data point representing general health in a quantifiable way, is the blood pressure level of the subjects. While not adequate to get a complete picture of someones health, it is a decent and easy way to measure someones general health. Both gender and age do impact the what is expected, and considered as good, but for this analysis I will use the table from [the heart research institution](https://www.hri.org.au/health/learn/risk-factors/what-is-normal-blood-pressure-by-age) to determine if someone has low, optimal, normal or high blood pressure. [Cardiovascular related deaths are among, or the top killer for countries across the globe, and it is reported that up to 80% of heart attacks are preventable](https://world-heart-federation.org/news/deaths-from-cardiovascular-disease-surged-60-globally-over-the-last-30-years-report/). High blood pressure is related to cardiovascular related diseases, and so finding ways to get ones blood pressure to optimal levels should be something people strive towards.
+
+::: {layout="[60,40]"}
+As we can see in the table to the right, I have created a table where I split the subjects into groups based on what their blood pressure is considered to be by the health research institute. Most of the subjects find themselves within the normal range, but there are approximately 2,5 times as many people with high blood pressure than there are people who have high blood pressure. The sample leans more towards the higher range of blood pressure, which for the sake of the analysis is a good thing, as it more closely resembles the population then if the opposite had been the case.
+
+```{r}
+Blood_Preassure <- Sleep_dataset %>% 
+  select(`Blood Pressure`) %>% 
+  count(`Blood Pressure`, name = "Count")
+x <- data.frame(
+  Bloodpressure_level = c("Optimal", "Normal", "A bit high", "High"),
+  Count = c(sum(Blood_Preassure$Count[1:6]),
+             sum(Blood_Preassure$Count[7:15]),
+             sum(Blood_Preassure$Count[16:20]),
+             sum(Blood_Preassure$Count[21:25])
+             )
+)
+gt(x) %>% 
+  tab_header(
+    title = "A Grouped overview of the subjects blood preassure levels",
+    subtitle = "Using data from the HRI to determine what levels the subjects should be considered as based on their blood pressure readings"
+  ) %>% 
+  cols_label(
+    Bloodpressure_level = "Blood Pressure"
+  ) %>% 
+  gt_theme_nytimes() %>% 
+  as_raw_html()
+```
+:::
+
+### Testing the effects of sleep and age on blood pressure levels.
+
+Let's try modelling the effects that quality that the quality of sleep, and physical activity level has on a persons blood pressure level. To create the model, I created a new variable that puts a number value to what category (optimal, normal, a bit high or high) a persons blood pressure level is at.
+
+```{r}
+Sleep_dataset <- Sleep_dataset %>% 
+  mutate(
+    "BMI Category" = str_replace(Sleep_dataset$`BMI Category`, "Normal Weight", "Normal")
+  )
+Sleep_dataset <- Sleep_dataset %>% 
+  arrange(`Blood Pressure`) %>% 
+  mutate("Blood Pressure Category" = c(rep("Optimal", 41),
+                                       rep("Normal", 125),
+                                       rep("A bit high", 108),
+                                       rep("High", 100)
+                                       )
+         ) %>% 
+  mutate(
+    "Blood Pressure Level" = case_when(`Blood Pressure Category` == "Optimal" ~ 4,
+                                       `Blood Pressure Category` == "Normal" ~ 3,
+                                       `Blood Pressure Category` == "A bit high" ~ 2,
+                                       `Blood Pressure Category` == "High" ~ 1)
+  )
+
+Sleep_dataset %>% 
+  tbl_uvregression(
+    method = lm,
+    y = `Blood Pressure Level`,
+    include = c(`Sleep Duration`, Age),
+    pvalue_fun = label_style_pvalue(digits = 2)
+  ) %>% 
+  as_gt() %>% 
+  as_raw_html()
+```
+
+
+As we can see, Sleep does significantly improve upon a persons blood pressure levels. An additional two hours improves a persons blood pressure readings to such an extent, that assuming a persons readings are not above the halfway point for any category, the person would improve from one category to the next (for instance going from normal to ideal blood pressure readings).

@@ -1,11 +1,7 @@
 ---
-title: "PhilipFosserPortfolioProcects"
+title: "A portfolio website by Philip Fosser"
 ---
 
-This is a Quarto website.
+Hello there! My name is Philip, and this is my portfolio website, as you can probably surmise by the title of this homepage. If you are reading this, odds are you are either a recruiter, or someone else served with the responsibility of vetting potential candidates for a position. If so, I hope this website serves as proof that I actually do know the things I claim in my resume and cover letter. There is also a chance that the person reading this is my beautiful girlfriend, if so, I love you and the sleep analysis tab is meant to inspire you to take your sleep more seriously!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+This website, as mentioned, is meant as proof of my abilities to use code as a tool for documentation, analyze, visualize etc. It is also meant as a opportunity for me to practice my coding skills. Because this is a website, I'm also forced to learn how to use some basic HTML, Markdown, CSS, YAML and lastly how Github.
