@@ -10,8 +10,7 @@ website:
         text: Home
       - text: Sleep
         href: Sleep_Analysis.qmd
-      - href: Eiendoms_rapport.qmd
-        text: Eiendoms investering rapport
+      
 
 format:
   html:
