@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "A portfolio website by Philip Fosser",
     "section": "",
-    "text": "Hello there! My name is Philip, and this is my portfolio website, as you can probably surmise by the title of this homepage. If you are reading this, odds are you are either a recruiter, or someone else served with the responsibility of vetting potential candidates for a position. If so, I hope this website serves as proof that I actually do know the things I claim in my resume and cover letter. There is also a chance that the person reading this is my beautiful girlfriend, if so, I love you and the sleep analysis tab is meant to inspire you to take your sleep more seriously!\nThis website, as mentioned, is meant as proof of my abilities to use code as a tool for documentation, analyze, visualize etc. It is also meant as a opportunity for me to practice my coding skills. Because this is a website, I’m also forced to learn how to use some basic HTML, Markdown, CSS, YAML and lastly how Github."
+    "text": "Hello there! My name is Philip, and this is my portfolio website, as you can probably surmise by the title of this homepage. If you are reading this, odds are you are either a recruiter, or someone else served with the responsibility of vetting potential candidates for a position. If so, I hope this website serves as proof of my abilities to R, as a tool for data analysis and reporting. There is also a chance that the person reading this is my beautiful girlfriend, if so, I love you and the sleep analysis tab is meant to inspire you to take your sleep more seriously!\nThis website, as mentioned, is meant as proof of my abilities to use coding as a tool for documentation, analyzing, visualizing etc. It is also meant as a opportunity for me to practice my coding skills. Because this is a website, I’m also forced to learn how to use some basic HTML, Markdown, CSS, YAML and lastly how Github works."
   },
   {
     "objectID": "Sleep_Analysis.html",
@@ -26,5 +26,33 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Eiendoms_rapport.html",
+    "href": "Eiendoms_rapport.html",
+    "title": "Eiendoms_rapport",
+    "section": "",
+    "text": "Denne reapporten er ment som en initiell lønnsomhetsvurdering av et investeringsprosjekt. Mye av dataen brukt er desverre basert på grove estimater, og må dermed tas med grei mengde salt. Ideen er bak prosjektet er ganske enkelt. Kjøpe en hus som er av veldig god standart, men har en mer gammeldags stil (70 tallet). Ettersom jeg er ganske handy, og har tilgang til mye hjelp, vil mye av kostnadene relatert til innleing av arbeidskraft bli minimalisert.\nDen største jobben som vi vet må gjøres, er å isolere huset, og oppdatere vinduer. Vi håper å kunne sette inn forbedret glass i vinduene som allerede er der, da vinduene er originale til huset, og er laget av mahogany. Huset må muligens dreneres, men har mine tvil på om det vil haste. Kjøkkenet er lite, og ikke av moderne standard. Vegg mellom kjøkken og spisestue burde rives, slik at det blir en åpen kjøkkenløsning. Dette vil drastisk øke kjøkkenplass, men også få huset til å se betydelig mye større ut. Nytt, større vindu kan vurderes å settes inn for å øke langs veggen mellom kjøkken og stue i etterkant for å slippe inn mye sollys, og videre øke følelsen av størrelsen på huset. Nytt sikringsskap burde nok også settes inn, og er desverre ikke noe vi får gjort på egenhånd. Kjelleren er den største muligheten for verdiøkning for huset. Det er usikkert om det er mulig, eller lov å gjøre det om til en utleieenhet. Av den grunn blir planen jeg tar utgangspunkt i for denne rapporten være at vi øker den beboelige plassen for huset gjennom å pusse opp noen av rommene i kjelleren. Vi må da i tillegg lage en ekstra inngang til kjelleren som kan fungere som en nødutvei. Kostnaden blir ikke liten, men den beboelige plassen vil øke med ca 50%."
+  },
+  {
+    "objectID": "Eiendoms_rapport.html#innledning",
+    "href": "Eiendoms_rapport.html#innledning",
+    "title": "Eiendoms_rapport",
+    "section": "",
+    "text": "Denne reapporten er ment som en initiell lønnsomhetsvurdering av et investeringsprosjekt. Mye av dataen brukt er desverre basert på grove estimater, og må dermed tas med grei mengde salt. Ideen er bak prosjektet er ganske enkelt. Kjøpe en hus som er av veldig god standart, men har en mer gammeldags stil (70 tallet). Ettersom jeg er ganske handy, og har tilgang til mye hjelp, vil mye av kostnadene relatert til innleing av arbeidskraft bli minimalisert.\nDen største jobben som vi vet må gjøres, er å isolere huset, og oppdatere vinduer. Vi håper å kunne sette inn forbedret glass i vinduene som allerede er der, da vinduene er originale til huset, og er laget av mahogany. Huset må muligens dreneres, men har mine tvil på om det vil haste. Kjøkkenet er lite, og ikke av moderne standard. Vegg mellom kjøkken og spisestue burde rives, slik at det blir en åpen kjøkkenløsning. Dette vil drastisk øke kjøkkenplass, men også få huset til å se betydelig mye større ut. Nytt, større vindu kan vurderes å settes inn for å øke langs veggen mellom kjøkken og stue i etterkant for å slippe inn mye sollys, og videre øke følelsen av størrelsen på huset. Nytt sikringsskap burde nok også settes inn, og er desverre ikke noe vi får gjort på egenhånd. Kjelleren er den største muligheten for verdiøkning for huset. Det er usikkert om det er mulig, eller lov å gjøre det om til en utleieenhet. Av den grunn blir planen jeg tar utgangspunkt i for denne rapporten være at vi øker den beboelige plassen for huset gjennom å pusse opp noen av rommene i kjelleren. Vi må da i tillegg lage en ekstra inngang til kjelleren som kan fungere som en nødutvei. Kostnaden blir ikke liten, men den beboelige plassen vil øke med ca 50%."
+  },
+  {
+    "objectID": "Eiendoms_rapport.html#antagelser",
+    "href": "Eiendoms_rapport.html#antagelser",
+    "title": "Eiendoms_rapport",
+    "section": "Antagelser",
+    "text": "Antagelser\nPris anntydningen for hus og tomt er på 3.000.000 kr. Vi vil få inn 4.000 kr i leieinntekter per måned, og vi må betale 1250 kr i tomt leie per år, da tomta huset befinner seg på er eid av en annen. Strøm, vann etc. Vil bli dekket av leietaker. Huset blir finnansiert med et lån på 2.700.000, med en effektiv rente på 5%. Dette gir en månedlig kostnad på 14.313 kr. Vi må også betale eiendomsskatt, og basert på informasjonen fra Sarpsborg kommune sin hjemmeside, ender dette med å koste oss 6.480 kr i året. Fakturaen skal teknisk sett bli del betalt, men for enkelhetens skyld, antar jeg en regning på slutten av året for mine beregninger."
+  },
+  {
+    "objectID": "Eiendoms_rapport.html#beregning-og-vurdering.",
+    "href": "Eiendoms_rapport.html#beregning-og-vurdering.",
+    "title": "Eiendoms_rapport",
+    "section": "Beregning og vurdering.",
+    "text": "Beregning og vurdering.\nJeg kommer til å bruke en NPV av kontantstrømmen, med antagelse om salg av hus om 3 år."
   }
 ]
