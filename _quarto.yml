@@ -12,7 +12,9 @@ website:
         href: Sleep_Analysis.qmd
       - href: Eiendoms_rapport.qmd
         text: Eiendoms investering rapport
-
+      - href: Dashboard.qmd
+        text: Eiendomsdashboard
+  
 format:
   html:
     theme: solar

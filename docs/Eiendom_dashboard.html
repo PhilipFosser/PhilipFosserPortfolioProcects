@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Eiendoms rapport – PhilipFosserPortfolioProcects</title>
+<title>Eiendom_dashboard – PhilipFosserPortfolioProcects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,6 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +78,8 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -96,12 +105,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Sleep</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./Eiendoms_rapport.html" aria-current="page"> 
+    <a class="nav-link" href="./Eiendoms_rapport.html"> 
 <span class="menu-text">Eiendoms investering rapport</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Dashboard.html"> 
-<span class="menu-text">Eiendomsdashboard</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -109,74 +114,41 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-</header>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Eiendom_dashboard</a></div>
+        
+        
+      </div>
+    </div>
+</div>
+</nav>
+</header></header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#innledning" id="toc-innledning" class="nav-link active" data-scroll-target="#innledning">Innledning</a></li>
-  <li><a href="#antagelser" id="toc-antagelser" class="nav-link" data-scroll-target="#antagelser">Antagelser</a></li>
-  <li><a href="#beregning-og-vurdering." id="toc-beregning-og-vurdering." class="nav-link" data-scroll-target="#beregning-og-vurdering.">Beregning og vurdering.</a></li>
-  <li><a href="#scenario-sensitivitets-analyser." id="toc-scenario-sensitivitets-analyser." class="nav-link" data-scroll-target="#scenario-sensitivitets-analyser.">Scenario sensitivitets analyser.</a></li>
-  <li><a href="#konklusjon" id="toc-konklusjon" class="nav-link" data-scroll-target="#konklusjon">Konklusjon</a></li>
-  </ul>
-</nav>
-    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Eiendoms rapport</h1>
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-columns: ;
+grid-auto-rows: minmax(0, 1fr);">
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="innledning" class="level2">
-<h2 class="anchored" data-anchor-id="innledning">Innledning</h2>
-<p>Denne rapporten er ment som en initiell loennsomhetsvurdering av et investeringsprosjekt. Mye av dataen brukt er dessverre basert paa grove estimater, og maa dermed tas med grei mengde salt. Ideen er bak prosjektet er ganske enkelt. Kjoepe en hus som er av veldig god strukturell standard, men som har en mer gammeldags stil (70 tallet). Ettersom jeg er ganske handy, og har tilgang til mye hjelp, vil mye av kostnadene relatert til innleiing av arbeidskraft bli minimalisert.</p>
-<p>Den stoerste jobben som vi vet maa gjoeres, er aa isolere huset, og oppdatere vinduer. Vi haaper aa kunne sette inn forbedret glass i vinduene som allerede er der, da vinduene er originale til huset, og er laget av teak. Huset maa muligens dreneres, men har mine tvil paa om det vil haste. Kjoekkenet er lite, og ikke av moderne standard. Vegg mellom kjoekken og spisestue burde rives, slik at det blir en aapen kjoekkenloesning. Dette vil drastisk oeke kjoekkenplass, men ogsaa faa huset til aa se betydelig mye stoerre ut. Nytt sikringsskap burde nok ogsaa settes inn, og er dessverre ikke noe vi faar gjort paa egenhaand. Kostnaden for det som er nevnt saa langt er estimert til aa vaere under 100.000 kr. Kjelleren er den stoerste muligheten for verdioekning for huset. Det er usikkert om det er mulig, eller lov aa gjoere det om til en utleieenhet. Tak hoeyde maa vaere minst 2 meter, vinduer maa forstoerres for at rommene skal telles som beboelig, og en noedutgang maa setter inn. Vi estimerer pris for opparbeiding av kjeller til aa ligge paa ca 200.000 kr. En betydelig investering, men en som veldig sansynelig kan oeke antall beboelig kvm med 50. Dette vil foere til en oeking paa total antal kvm for huset med 50%.</p>
-</section>
-<section id="antagelser" class="level2">
-<h2 class="anchored" data-anchor-id="antagelser">Antagelser</h2>
-<p>Pris antydningen for hus og tomt er paa 3.000.000 kr. Vi vil faa inn 4.000 kr i “leieinntekter” per maaned, og vi maa betale 1250 kr i tomt leie per aar, da tomta huset befinner seg paa er eid av en annen. Stroem, vann etc. Vil bli dekket av leietaker. Huset blir finansiert med et laan paa 2.700.000, med en effektiv rente paa 5.69%. Dette gir en maanedlig kostnad paa 14.313 kr. Vi maa ogsaa betale eiendomsskatt, og <a href="https://www.sarpsborg.com/globalassets/dokumenter/eiendomsskatt/eiendomsskatt---forklaring-seddel-24.pdf">basert paa informasjonen fra Sarpsborg kommune sin hjemmeside</a>, ender dette med aa koste oss 6.480 kr i aaret. Fakturaen skal teknisk sett bli del betalt, men for enkelhetens skyld, antar jeg en regning paa slutten av aaret for mine beregninger. <a href="https://www.krogsveen.no/prisstatistikk/sarpsborg-quarterly">Ifoelge data fra krogsveen</a>, saa oeker boligprisen per kvm i Sarpsborg med 3% hvert aar, og har per februar 2025 en snittpris paa 32.035 kr. Huset er 100 kvm, og vil oeke til 150 kvm etter oppussing. Prisen per kvm vi faar huset for er basert paa dette ganske lav, men det skal nevnes at dette kan forklares av oppgraderingene som kreves, og at det kun er et bad.</p>
-<p>Jeg beholder antagelsen om prisen for huset, og antal kvm etter videre investering til aa vaere likt det jeg skrev ovenfor, naar jeg beregner base scenarioet. Jeg antar en lavere gjennomsnittelig prisoeking paa grunn av turbulente tider, og antar den kun blir paa 1%. Prisen per kvm er usansynelig aa naa over den gjennomsnittelige prisen for Sarpsborg, og vi frykter lav eller ingen saerlig oekning i pris per kvm som foelge av oppgraderingene huset faar. Jeg antar dermed at prisen foblir 30.000 kr per kvm slik den er idag, naar huset selges om 2 aar (med 1% oeking per aar). Vi antar at 500.000 kr vil vaere en realitisk kostnad for oppgraderingene vi gjennomfoerer.</p>
-</section>
-<section id="beregning-og-vurdering." class="level2">
-<h2 class="anchored" data-anchor-id="beregning-og-vurdering.">Beregning og vurdering.</h2>
-<p>Foerst og fremst, trenger jeg aa finne WACC saa jeg kan risiko og tids justerte kontantstroemmen. Salget av denne boligen vil vaere skattefri. Basert paa informasjon fra Demodaran, kan vi bruke en ujustert beta paa 0.43. Naar vi justerer betaen for vaart prosjekt, saa faar vi en beta paa 4,3. En ganske hoey beta, men det gir mening med tanke paa at vi har en veldig hoey gjeldsgrad. Basert paa beregninger, bruker vi en forventet avkastning paa egenkapitalen paa 0.265. WACC blir da 0.0715. Med disse tallene kan vi ta en NPV analyse av kontant stroemmen. Prosjektets base case faar en NPV paa 758.945 kr. Utifra det vi laerer i finans faget, saa burde vi ta ethvert prosjekt som har positiv NPV, gitt at vi ikke har et annet prosjekt vi kan tjene mer paa. Hva teorien sier, og hva som gjelder i virkeligheten er paa den annen side sjeldent saa enkelt. Derfor gjennomfoeres det ogsaa sensitivitet og scenario analyser for aa ta hoeyde for varians som ikke blir tat i betraktning for i base caset.</p>
-</section>
-<section id="scenario-sensitivitets-analyser." class="level2">
-<h2 class="anchored" data-anchor-id="scenario-sensitivitets-analyser.">Scenario sensitivitets analyser.</h2>
-<p>Det mest innflytelsesrike spoersmaalet er om takhoeyden paa kjelleren er tilstrekkelig for at det kan omkvalifiseres til beboelig areale. Om ikke, saa vil ikke prosjektet vaere loensomt. Det er noe vi vil faa klargjort foer en avgjoerelse maa tas. Det paavirker med andre ord ikke risikoen for prosjektet, saa videre i rapporten tar jeg antagelsen for at vi kan omgjoere kjeller til beboelig arealet.</p>
-<p>Avvik mellom forventet renoverings/oppgraderings kostnad er aa forvente, men loennsomheten til prosjektet er i liten grad paavirket av dette, og prosjektet er dermed ikke seisitivt til den faktoren. Loennsomheten er heller ikke sensitiv til om vi har, eller ikke har en leietaker under perioden, eller til hva prisen paa huset ender opp med aa vaere. Vi taper 68.000 kr i aaret paa manglende leietaker (tap av leieinntekter + betaling komuneavgifter maa da tas i betraktning), og prisen for huset er usansynelig aa falle under 2.7 milloner kr, og vil hoeyst usansynelig overstige 3 milloner kr. Prosjektets NPV endrer seg til 455.378 kr ved aa fjerne leieinntekter, og ved oeke renoveringskostnadene med 40%. En nedgang for NPV paa ca 34%.</p>
-<p>Hovedkilden for varians i dette prosjektet er knyttet til antall kvm huset har ved prosjektets slutt, og prisen per kvm. Antar vi prisen per kvm holder seg til 30.000 kr, saa vil en endring mellom den forventede antallet kvm paa 150, hva vi antar er det verste tilfellet paa 140, vil dette foere til en salgspris om er 300.000 kr lavere enn ved base caset. En 20% endring i kvm, vil da foere til en endring paa rundt 33% paa NPV. Prisen per kvm er den mest usikre faktoren, og noe prosjektets loennsomhet er sterkt paavirket av. Prisen per kvm per dags dato paa 30.000 kr er relativt lav iforhold til hva snittet for eneboliger er i Sarpborg. Og vi finner hus under samme postadresse med hoeyere pris per kvm enn hva snittet er. Dette gjelder baade store og smaa hus. Vi fant paa den annnen side et hus som er en god del stoerre under samme postadresse, og som var laget paa rundt samme tid til en pris som falt langt under snittet i Sarpborg. Huset hadde en pris per kvm paa 21.670 kr, og til denne prisen, vil et hus paa 150 kvm foere til en negativ NPV paa -488.560 kr. Huset ser mer moderne ut innendoers, men har noen store problemer med det ene badet huset har tilgjengelig, og noen relativ serioese problemer med kjelleren. Den er ogsaa daarligere plassert, og har daarligere solforhold. Dette gjoer meg noe nervoes for prosjektets loensomhet. Problemene med det andre huset er dyre, og vanskelige ordne opp i selv, men denne prisforksjellen per kvm er ganske drastisk. Base caset tok hoeyde for at vi mest sansynelig ikke kom til aa klare aa oeke prisen per kvm til tross for oppgraderingene. Jeg har ogsaa tatt utgangspunkt i at det er mer sannsynlig at prisen per kvm synker enn oeker, men med tanke paa hvor lav prisen per kvm kan bli i det omdraadet gir grunn til aa vaere urolig. Jeg syntes ikke at odsen for at prisen synker saa lavt etter renoveringer er sannsynelig, men det maa tas under betraktning. Om prisen ikke faller under 25430 vil prosjektet vaere loennnsomt om alle andre antagelser fra base caset holder. Om vi ikke har leietaker, renveringskostnadene stiger til 700.000 kr, maa vi har en pris per kvm paa 27750 kr for aa oppnaa en positiv kvm. Prisen kan i dette tilfellet falle med 7,5% fra vi kjoeper til vi selger for at prosjektet skal vaere loennsomt. Om vi i tillegg kun faar 40 kvm ekstra fra renoveringen, vil prisen per kvm vaere paa 29.750 kr for at vi skal oppnaa en positiv NPV. Dette er en endring paa &gt;1%.</p>
-</section>
-<section id="konklusjon" class="level2">
-<h2 class="anchored" data-anchor-id="konklusjon">Konklusjon</h2>
-<p>Prosjektets NPV har en positiv NPV ved base caset. Husets gode standard er baade positivt og negativt for prosjektet. Det er lite som er utenfor vaar evne til aa fikse selv, men det foerer ogsaa til vi har lite og hente og mye aa tape naar det kommer til huset pris per kvm. Om vi tar prosjektet eller ikke vil vaere avhengig av hvor mange kvm vi kan faa huset til aa vaere ved prosjektets slutt. Vet vi at vi kan forvente minst 50 ekstra kvm, vil jeg paastaa at vi har nokk aa paa for prisen per kvm til at prosjektet kan skal vaere loennsomt.</p>
-
-
-</section>
-
-</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -283,11 +255,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -604,6 +571,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
 
 
 

@@ -1,0 +1,125 @@
+---
+title: "Dashboard"
+format: dashboard
+---
+```{r}
+library(FinancialMath)
+library(tidyverse)
+library(bslib)
+library(shiny)
+library(scales)
+```
+
+# NPV analyse
+
+## Row {Height ="30%"}
+
+```{r}
+Totalinvestering <- 3000000
+Kvm_base <- 100
+Laanbeloep <- -(Totalinvestering*0.9)
+WACC <- 300000/3000000*0.265+0.9*0.05
+```
+
+```{r}
+#| content: valuebox
+#| icon: cash
+#| title: "NPV"
+Nypris <- (Totalinvestering/Kvm_base*1.02)*1.01^2*150
+Rentenedbetalingtabell <- amort.table(Loan = -1*Laanbeloep, n = 30*12, i=0.0569, pf = 12)
+Rentenedbetaling <- Rentenedbetalingtabell$Schedule[,3]
+Renteavskrivning <- (sum(Rentenedbetaling[1:12])+sum(Rentenedbetaling[13:24]))*0.22
+Kontantstroem <- 4000*12-1250+Renteavskrivning/2-250000-6480
+NPV_base <- NPV(-Totalinvestering, c(Kontantstroem,Kontantstroem, Nypris),c(1,2,2), 0.0715)
+dollar(NPV_base)
+```
+
+
+
+```{r}
+#| content: valuebox
+#| icon: graph-down-arrow
+#| title: "Verste tilfelle"
+verst_til_best_kvm <- seq(140,160)
+verst_til_best_pkvm <- seq(21670, (Totalinvestering/Kvm_base*1.04)*1.02^2)
+verst_Kontantstroem <- -1250+Renteavskrivning/2-350000-20000-6480
+NPV_verst <- NPV(-Totalinvestering, c(verst_Kontantstroem,verst_Kontantstroem, verst_til_best_pkvm[1]*verst_til_best_kvm[1]),c(1,2,2), 0.0715)
+dollar(NPV_verst)
+```
+
+```{r}
+#| content: valuebox
+#| icon: graph-up-arrow
+#| title: "Beste tilfelle"
+best_Kontantstroem <- 4000*12-1250+Renteavskrivning/2-200000
+NPV_best <- NPV(-Totalinvestering, c(best_Kontantstroem,best_Kontantstroem, last(verst_til_best_pkvm)*last(verst_til_best_kvm)),c(1,2,2), 0.0715)
+dollar(NPV_best)
+```
+## Row {height =  "70%"}
+
+:::{.panel-tabset}
+
+## NPV sensitivitet ved endring av KVM
+
+```{r}
+#| fig-width: 9
+#| fig-height: 2.5
+verst_til_best_kvm_sensitivitet <- as.vector(verst_til_best_kvm*((Totalinvestering/Kvm_base)*1.01^2))
+
+verst_til_best_kvm_sensitivitet_NPV <- data.frame(
+  Pris = map_dbl(verst_til_best_kvm_sensitivitet, .f = ~NPV(-Totalinvestering, c(Kontantstroem, Kontantstroem, .x), c(1,2,2), 0.0715)),
+  KVM = seq(140,160)
+)
+
+ 
+ggplot(verst_til_best_kvm_sensitivitet_NPV[c(1,6,11,16,21),], aes(x=KVM, y=Pris, )) +
+  geom_col(fill = "#da70d6") +
+  ggtitle("Sensitivitets illustrasjon") +
+  theme(
+    panel.background = element_rect(fill =  "#6c757d"),
+    plot.background = element_rect(fill = "#6c757d"),
+    panel.grid = element_blank()
+    )+
+  scale_y_continuous(
+    "NPV",
+    labels =  scales::label_number(scale_cut = cut_short_scale())
+  )
+```
+
+## NPV sensitivitet ved endring av pris per KVM
+
+```{r}
+#| fig-width: 9
+#| fig-height: 2.5
+verst_til_best_pkvm_sensitivitet <- verst_til_best_pkvm*150
+
+verst_til_best_pkvm_sensitivitet_NPV <- data.frame(
+  NPV = map_dbl(verst_til_best_pkvm_sensitivitet, .f = ~NPV(-Totalinvestering, c(Kontantstroem, Kontantstroem, .x), c(1,2,2), 0.0715)),
+  "Pris per KVM" = verst_til_best_pkvm
+)
+
+verst_til_best_pkvm_sensitivitet_NPV[c(1,1800,3600,5400,7200, 9000, 10791),] %>% 
+  ggplot(aes(x=Pris.per.KVM, y=NPV)) +
+  geom_col(fill = "#da70d6") +
+  theme(
+    panel.background = element_rect(fill =  "#6c757d"),
+    plot.background = element_rect(fill = "#6c757d"),
+    panel.grid = element_blank()
+    ) + 
+  ggtitle("Sensitivitets illustrasjon") +
+  scale_y_continuous(
+    "NPV",
+    labels =  scales::label_number(scale_cut = cut_short_scale())
+    ) +
+      scale_x_continuous("Pris per KVM",
+                         labels = scales::label_comma()
+    )
+  
+```
+
+
+
+:::
+
+
+
