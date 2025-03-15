@@ -8,7 +8,6 @@ warning: false
 toc: true
 ---
 
-
 ```{r message=FALSE}
 library(tidyverse)
 library(waffle)
@@ -26,7 +25,6 @@ Sleep_dataset <- read_csv("Sleep_health_and_lifestyle_dataset.csv")
 ## An exploratory analasys of sleep, stress and general health indicatory data.
 
 In recent times, there has been a lot of interest in the importance of good quality sleep, as there has been a substantial influx of good quality studies on the health effects that good quality sleep, or lack there off, has on the human body and psyche. Perhaps more importantly for the public awareness of the importance of quality sleep is the book [why we sleep](https://en.wikipedia.org/wiki/Why_We_Sleep) by Mathew Walker, and the and the many podcast episodes by [Huberman](https://www.hubermanlab.com/all-episodes), where he frequently underlines the importance of getting high quality sleep as the most important activity one can do for ones own health, and that in general no one should try to do anything else for ones health in lieu of getting high quality sleep if one wishes to improve their own health.
-
 
 ::: {layout="[40,60]" layout-valign="center"}
 First lets explore the data. To the right of this text there are visual representations of the data set. There are a total of 13 variables, including the ID for the study subjects, describing some of the health indicators for the 374 subjects. First thing worth mentioning is that the study has been run of male and female subjects, which sadly, is not something to be taken for granted even today. On top of that, the study has been done on a good range of age groups, which is another good indicator for the quality of the study. However on closer inspection, while the both the ratio of males and females, and the range of ages are good, the spread of men and women across the ages leaves something to be desired. The majority of males in the study are between their late twenties to early forties, and none of the men are above their mid fifties. The majority of female subjects on the other hand, are between the ages of their late forties and early sixties. There are no women in the study who are in their mid twenties, and very few are in their late twenties and early thirties. For the purposes of this report, it's not that impactful. I don't expect there to be a significant difference between men and women when it comes to the health impacts of sleep for any of the reported age groups. But it will impact any models created using either gender or age as one of the factors. Therefore, I will not use these factors for any of the regressions used in this report.
@@ -164,6 +162,5 @@ Sleep_dataset %>%
   as_gt() %>% 
   as_raw_html()
 ```
-
 
 As we can see, Sleep does significantly improve upon a persons blood pressure levels. An additional two hours improves a persons blood pressure readings to such an extent, that assuming a persons readings are not above the halfway point for any category, the person would improve from one category to the next (for instance going from normal to ideal blood pressure readings).
